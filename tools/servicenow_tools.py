@@ -21,4 +21,4 @@ def extract_request_details(state):
         state["errors"] = str(e);
         return state;
 
-
+print("All good - tools/servicenow_tools.py now ready to be used");
