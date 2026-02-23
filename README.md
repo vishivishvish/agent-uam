@@ -81,25 +81,18 @@ This POC is a first step toward building a reusable Agentic workflow engine capa
 
 This repository currently implements:
 
-Structured request ingestion
-
-Deterministic graph execution
-
-Configurable workflow steps
-
-Git based iterative development
+- Structured request ingestion
+- Deterministic graph execution
+- Configurable workflow steps
+- Git based iterative development
 
 Future evolution includes:
 
-LLM powered decision nodes
-
-Dynamic tool selection
-
-Conditional graph branching
-
-Enterprise API integrations
-
-Multi-workflow support
+- LLM powered decision nodes
+- Dynamic tool selection
+- Conditional graph branching
+- Enterprise API integrations
+- Multi-workflow support
 
 ## 🛠 Tech Stack
 
