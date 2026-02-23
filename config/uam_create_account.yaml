@@ -1,0 +1,5 @@
+workflow_name: create_account
+
+steps:
+  - extract_request_details
+  - resolve_approver
