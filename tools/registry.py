@@ -7,4 +7,4 @@ TOOL_REGISTRY = \
     "resolve_approver": resolve_approver
 }
 
-print("All good - tools/registry.py ready to be used");
+print("All good - tools/registry.py now ready to be used");
