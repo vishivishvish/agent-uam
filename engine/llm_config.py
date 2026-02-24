@@ -14,3 +14,5 @@ llm = AzureChatOpenAI\
     api_version = api_version,
     temperature = temperature
 );
+
+print("All good - engine/llm_config.py now ready to be used");
