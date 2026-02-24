@@ -1,5 +1,9 @@
 workflow_name: create_account
 
 steps:
-  - extract_request_details
+  - validate_and_normalize_request
   - resolve_approver
+  - simulate_approval
+  - check_user_exists
+  - create_user
+  - close_request
