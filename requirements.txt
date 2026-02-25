@@ -1,6 +1,7 @@
+pyyaml
 fastapi
 uvicorn
-langgraph
-langchain
-pyyaml
 requests
+langchain
+langgraph
+langchain-openai
