@@ -1,34 +1,93 @@
-EXISTING_USERS = ["john.doe@company.com"];
+from pprint import pprint
+
+EXISTING_USERS = ["john.doe@company.com"]
+
 
 def check_user_exists(state):
-    email = state["normalized"]["email"];
-    state["user_exists"] = email in EXISTING_USERS;
-    return state;
+
+    print("\n" + "-" * 70)
+    print("STEP: CHECK IF USER EXISTS (Veeva)")
+    print("-" * 70)
+
+    print("\nSTATE BEFORE")
+    pprint(state)
+
+    email = state["normalized"]["email"]
+    print(f"\nChecking existence for email: {email}")
+
+    state["user_exists"] = email in EXISTING_USERS
+
+    if state["user_exists"]:
+        print("User already exists in Veeva")
+    else:
+        print("User does NOT exist in Veeva")
+
+    print("\nSTATE AFTER")
+    pprint(state)
+
+    return state
+
 
 def create_user(state):
 
-    if state["user_exists"]:
-        state["provisioning_result"] = \
-        {
-            "message": "User already exists"
-        };
-        return state;
+    print("\n" + "-" * 70)
+    print("🔹 STEP: CREATE USER (Veeva Provisioning)")
+    print("-" * 70)
 
-    state["provisioning_result"] = \
-    {
+    print("\n📦 STATE BEFORE")
+    pprint(state)
+
+    if state["user_exists"]:
+        print("\n⚠️ Skipping creation — user already exists")
+
+        state["provisioning_result"] = {
+            "message": "User already exists"
+        }
+
+        print("\n📦 STATE AFTER")
+        pprint(state)
+
+        return state
+
+    print("\n🛠 Creating new Veeva user...")
+
+    state["provisioning_result"] = {
         "username": "generated_user_123",
         "status": "ACTIVE",
-        "system" : "Veeva Vault"
-    };
+        "system": "Veeva Vault"
+    }
 
-    return state;
+    print("✅ User successfully created")
+
+    print("\n📦 STATE AFTER")
+    pprint(state)
+
+    return state
+
 
 def close_request(state):
 
+    print("\n" + "-" * 70)
+    print("🔹 STEP: CLOSE SERVICENOW REQUEST")
+    print("-" * 70)
+
+    print("\n📦 STATE BEFORE")
+    pprint(state)
+
     if not state.get("provisioning_result"):
-        return state;
+        print("\n⚠️ No provisioning result — nothing to close")
+        return state
 
-    state["provisioning_result"]["servicenow_status"] = "Closed Complete";
-    return state;
+    print("\n🧾 Updating ServiceNow status to Closed Complete")
 
-print("tools/veeva_tools.py now ready to be used");
+    state["provisioning_result"]["servicenow_status"] = "Closed Complete"
+
+    print("✅ ServiceNow request closed")
+
+    print("\n📦 STATE AFTER")
+    pprint(state)
+
+    return state
+
+
+print("tools/veeva_tools.py now ready to be used")
