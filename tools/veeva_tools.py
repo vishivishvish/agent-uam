@@ -31,25 +31,25 @@ def check_user_exists(state):
 def create_user(state):
 
     print("\n" + "-" * 70)
-    print("🔹 STEP: CREATE USER (Veeva Provisioning)")
+    print("STEP: CREATE USER (Veeva Provisioning)")
     print("-" * 70)
 
-    print("\n📦 STATE BEFORE")
+    print("\nSTATE BEFORE")
     pprint(state)
 
     if state["user_exists"]:
-        print("\n⚠️ Skipping creation — user already exists")
+        print("\nSkipping creation — user already exists")
 
         state["provisioning_result"] = {
             "message": "User already exists"
         }
 
-        print("\n📦 STATE AFTER")
+        print("\nSTATE AFTER")
         pprint(state)
 
         return state
 
-    print("\n🛠 Creating new Veeva user...")
+    print("\nCreating new Veeva user...")
 
     state["provisioning_result"] = {
         "username": "generated_user_123",
@@ -57,9 +57,9 @@ def create_user(state):
         "system": "Veeva Vault"
     }
 
-    print("✅ User successfully created")
+    print("User successfully created")
 
-    print("\n📦 STATE AFTER")
+    print("\nSTATE AFTER")
     pprint(state)
 
     return state
@@ -68,23 +68,23 @@ def create_user(state):
 def close_request(state):
 
     print("\n" + "-" * 70)
-    print("🔹 STEP: CLOSE SERVICENOW REQUEST")
+    print("STEP: CLOSE SERVICENOW REQUEST")
     print("-" * 70)
 
-    print("\n📦 STATE BEFORE")
+    print("\nSTATE BEFORE")
     pprint(state)
 
     if not state.get("provisioning_result"):
-        print("\n⚠️ No provisioning result — nothing to close")
+        print("\nNo provisioning result — nothing to close")
         return state
 
-    print("\n🧾 Updating ServiceNow status to Closed Complete")
+    print("\nUpdating ServiceNow status to Closed Complete")
 
     state["provisioning_result"]["servicenow_status"] = "Closed Complete"
 
-    print("✅ ServiceNow request closed")
+    print("ServiceNow request closed")
 
-    print("\n📦 STATE AFTER")
+    print("\nSTATE AFTER")
     pprint(state)
 
     return state
