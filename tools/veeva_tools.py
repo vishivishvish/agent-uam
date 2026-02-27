@@ -31,4 +31,4 @@ def close_request(state):
     state["provisioning_result"]["servicenow_status"] = "Closed Complete";
     return state;
 
-print("All good - tools/veeva_tools.py now ready to be used");
+print("tools/veeva_tools.py now ready to be used");

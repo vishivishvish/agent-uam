@@ -9,4 +9,4 @@ class AgentState(TypedDict):
     provisioning_result: Optional[Dict[str, Any]]
     errors: Optional[str]
 
-print("All good - engine/state.py now ready to be used");
+print("engine/state.py now ready to be used");

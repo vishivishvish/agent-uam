@@ -24,4 +24,4 @@ def build_graph(config_path):
     return graph.compile();
 
 
-print("All good - engine/graph_builder.py now ready to be used");
+print("engine/graph_builder.py now ready to be used");

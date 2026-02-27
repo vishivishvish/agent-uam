@@ -13,4 +13,4 @@ TOOL_REGISTRY = \
     "close_request": close_request  
 };
 
-print("All good - tools/registry.py now ready to be used");
+print("tools/registry.py now ready to be used");

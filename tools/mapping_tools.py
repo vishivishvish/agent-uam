@@ -24,4 +24,4 @@ def resolve_approver(state):
         state["errors"] = str(e);
         return state;
 
-print("All good - tools/mapping_tools.py now ready to be used");
+print("tools/mapping_tools.py now ready to be used");

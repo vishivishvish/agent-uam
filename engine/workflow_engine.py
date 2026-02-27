@@ -37,4 +37,4 @@ def run_workflow(input_data):
 
     return result;
 
-print("All good - engine/workflow_engine.py now ready to be used");
+print("engine/workflow_engine.py now ready to be used");
