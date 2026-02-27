@@ -1,7 +1,11 @@
 from engine.graph_builder import build_graph;
+from pprint import pprint;
 
 def run_workflow(input_data):
 
+    print("\n" + "=" * 70);
+    print("WORKFLOW STARTED");
+    print("=" * 70);
     graph = build_graph("config/uam_create_account.yaml");
 
     initial_state = \
@@ -12,9 +16,23 @@ def run_workflow(input_data):
         "errors": None
     };
 
+    print("\n INITIAL STATE (Memory Snapshot)");
+    print("-" * 70);
+    pprint(initial_state);
+    print("\nExecuting LangGraph State Machine \n");
+
     result = graph.invoke(initial_state);
 
-    return result;
+    print("\n" + "=" * 70);
+    print("Workflow Completed");
+    print("=" * 70);
 
+    print("FINAL STATE (Memory Snapshot)");
+    print("-" * 70);
+    pprint(result);
+
+    print("\n" + "=" * 70 + "\n");
+
+    return result;
 
 print("All good - engine/workflow_engine.py now ready to be used");
