@@ -1,6 +1,8 @@
 from engine.graph_builder import build_graph;
 from pprint import pprint;
 
+print("WORKFLOW ENGINE LOADED FROM:", __file__)
+
 def run_workflow(input_data):
 
     print("\n" + "=" * 70);
