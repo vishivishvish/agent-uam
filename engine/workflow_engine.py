@@ -33,6 +33,16 @@ def run_workflow(input_data):
     print("-" * 70);
     pprint(result);
 
+    # --------------------------------------------
+    # Final Success / Failure Indicator
+    # --------------------------------------------
+
+    if result.get("errors"):
+        print("\n🔴 WORKFLOW FAILED");
+        print("Reason:", result["errors"]);
+    else:
+        print("\n🟢 SUCCESSFUL UAM WORKFLOW EXECUTION")
+
     print("\n" + "=" * 70 + "\n");
 
     return result;
