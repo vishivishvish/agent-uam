@@ -1,6 +1,14 @@
+######################################################################
+# Importing Libraries
+######################################################################
+
 import json;
 from pprint import pprint;
 from engine.llm_config import llm;
+
+######################################################################
+# Defining Required Fields for Validate & Normalize Request Tool
+######################################################################
 
 REQUIRED_FIELDS = \
 [
@@ -11,6 +19,10 @@ REQUIRED_FIELDS = \
     "environment",
     "country"
 ];
+
+######################################################################
+# Defining Validate and Normalize Request Tool
+######################################################################
 
 def validate_and_normalize_request(state):
 
@@ -87,4 +99,3 @@ def validate_and_normalize_request(state):
 
     return state; 
 
-print("tools/servicenow_tools.py now ready to be used");

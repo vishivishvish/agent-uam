@@ -25,24 +25,25 @@ AVAILABLE_TOOLS = [
 def generate_plan(user_message):
 
     prompt = f"""
-    You are an enterprise IAM orchestration planner.
-
-    Available tools:
-    {AVAILABLE_TOOLS}
-
-    Given the user request, generate a structured execution plan.
-
-    Output STRICT JSON:
-
-    {{
+    <RoleIntroduction>
+        1 - You are a Planner Agent responsible for enterprise IAM orchestration.
+        2 - Given the user request provided below, you need to generate a structured execution plan out of the tools available to you.
+    </RoleIntroduction>
+    <UserRequest>
+        {user_message}
+    </UserRequest>
+    <AvailableTools>
+        {AVAILABLE_TOOLS}
+    </AvailableTools>
+    <StrictJSONOutputFormat>
+        Output STRICT JSON in the following format:
+        {{
         "intent": "...",
         "steps": [
             {{"step": "tool_name"}}
         ]
-    }}
-
-    User Request:
-    {user_message}
+        }}
+    </StrictJSONOutputFormat>
     """
 
     response = llm.invoke(prompt);

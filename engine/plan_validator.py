@@ -10,12 +10,12 @@ from tools.registry import TOOL_REGISTRY;
 
 def validate_plan(plan):
 
-    steps = plan.get("steps", [])
+    steps = plan.get("steps", []);
 
     for step in steps:
-        tool_name = step["step"]
+        tool_name = step["step"];
 
         if tool_name not in TOOL_REGISTRY:
-            raise Exception(f"Unauthorized tool: {tool_name}")
+            raise Exception(f"Unauthorized tool: {tool_name}");
 
     return True

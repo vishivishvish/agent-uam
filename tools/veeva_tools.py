@@ -1,7 +1,18 @@
+######################################################################
+# Importing Libraries
+######################################################################
+
 from pprint import pprint
+
+######################################################################
+# Mock Existing Users List
+######################################################################
 
 EXISTING_USERS = ["john.doe@company.com"]
 
+######################################################################
+# Mock Checking User Exists Function Tool 
+######################################################################
 
 def check_user_exists(state):
 
@@ -27,6 +38,9 @@ def check_user_exists(state):
 
     return state
 
+######################################################################
+# Mock Creating User Function Tool 
+######################################################################
 
 def create_user(state):
 
@@ -64,6 +78,9 @@ def create_user(state):
 
     return state
 
+######################################################################
+# Mock Close Request Function Tool 
+######################################################################
 
 def close_request(state):
 
@@ -90,4 +107,3 @@ def close_request(state):
     return state
 
 
-print("tools/veeva_tools.py now ready to be used")

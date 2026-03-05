@@ -1,50 +1,60 @@
-from engine.graph_builder import build_graph;
-from pprint import pprint;
+######################################################################
+# Importing Libraries
+######################################################################
 
-print("WORKFLOW ENGINE LOADED FROM:", __file__)
+from engine.planner_agent import generate_plan
+from engine.plan_validator import validate_plan
+from engine.executor import execute_plan
+from memory.memory_store import save_memory
 
-def run_workflow(input_data):
+######################################################################
+# Main RUN WORKFLOW Function
+######################################################################
 
-    print("\n" + "=" * 70);
-    print("WORKFLOW STARTED");
-    print("=" * 70);
-    graph = build_graph("config/uam_create_account.yaml");
+def run_workflow(user_message, input_payload):
 
-    initial_state = \
-    {
-        "raw_input": input_data,
+    print("\n================================================");
+    print("[S1] GENERATING PLAN from PLANNER AGENT");
+    print("================================================\n");
+
+    plan = generate_plan(user_message);
+
+    print("\n==============================");
+    print("[S1] PLAN GENERATED");
+    print("==============================\n");
+
+    print("\n================================================");
+    print("[S2] VALIDATING PLAN from Plan Validator");
+    print("================================================\n");
+
+    validate_plan(plan);
+
+    print("\n==============================");
+    print("[S2] PLAN VALIDATED");
+    print("==============================\n");
+
+    print("\n========================================================");
+    print("[S3] EXECUTING PLAN step-by-step with Plan Executor");
+    print("========================================================\n");
+
+    initial_state = {
+        "raw_input": input_payload,
         "normalized": None,
         "approver": None,
+        "approval_status": None,
+        "user_exists": None,
+        "provisioning_result": None,
         "errors": None
-    };
+    }
 
-    print("\n INITIAL STATE (Memory Snapshot)");
-    print("-" * 70);
-    pprint(initial_state);
-    print("\nExecuting LangGraph State Machine \n");
+    result = execute_plan(plan, initial_state)
 
-    result = graph.invoke(initial_state);
+    print("\n==============================");
+    print("[S3] PLAN EXECUTED");
+    print("==============================\n");
 
-    print("\n" + "=" * 70);
-    print("Workflow Completed");
-    print("=" * 70);
-
-    print("FINAL STATE (Memory Snapshot)");
-    print("-" * 70);
-    pprint(result);
-
-    # --------------------------------------------
-    # Final Success / Failure Indicator
-    # --------------------------------------------
-
-    if result.get("errors"):
-        print("\n🔴 WORKFLOW FAILED");
-        print("Reason:", result["errors"]);
-    else:
-        print("\n🟢 SUCCESSFUL UAM WORKFLOW EXECUTION")
-
-    print("\n" + "=" * 70 + "\n");
+    if not result.get("errors"):
+        save_memory(plan, result)
+        print("[S3] No Errors in Plan Execution - EXECUTION TRACE SAVED TO MEMORY");
 
     return result;
-
-print("engine/workflow_engine.py now ready to be used");

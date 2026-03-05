@@ -1,4 +1,12 @@
+######################################################################
+# Importing Libraries
+######################################################################
+
 from pprint import pprint;
+
+######################################################################
+# Mock Role-based Approval 
+######################################################################
 
 ROLE_MAPPING = \
 {
@@ -8,6 +16,10 @@ ROLE_MAPPING = \
         "approver_email": "quality.owner@company.com"
     }
 };
+
+######################################################################
+# Mock Resolve Approver Function Tool
+######################################################################
 
 def resolve_approver(state):
 
@@ -45,4 +57,3 @@ def resolve_approver(state):
         state["errors"] = str(e);
         return state;
 
-print("tools/mapping_tools.py now ready to be used");

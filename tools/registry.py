@@ -1,7 +1,15 @@
+######################################################################
+# Importing Libraries
+######################################################################
+
 from tools.servicenow_tools import validate_and_normalize_request;
 from tools.mapping_tools import resolve_approver;
 from tools.approval_tools import simulate_approval;
 from tools.veeva_tools import check_user_exists, create_user, close_request;
+
+######################################################################
+# Setting up Tool Registry
+######################################################################
 
 TOOL_REGISTRY = \
 {
@@ -13,4 +21,3 @@ TOOL_REGISTRY = \
     "close_request": close_request  
 };
 
-print("tools/registry.py now ready to be used");

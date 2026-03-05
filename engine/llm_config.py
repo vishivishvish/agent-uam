@@ -1,4 +1,12 @@
+######################################################################
+# Import Libraries
+######################################################################
+
 from langchain_openai import AzureChatOpenAI;
+
+######################################################################
+# Azure OpenAI Credentials
+######################################################################
 
 azure_key = "e6cd8b069c0243bb877b9d202fac9f74";
 azure_endpoint = "https://llmcoesre-openai.openai.azure.com/";
@@ -15,4 +23,3 @@ llm = AzureChatOpenAI\
     temperature = temperature
 );
 
-print("engine/llm_config.py now ready to be used");

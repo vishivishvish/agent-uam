@@ -1,4 +1,12 @@
+######################################################################
+# Importing Libraries
+######################################################################
+
 from pprint import pprint
+
+######################################################################
+# Simulate Approval Function Tool
+######################################################################
 
 def simulate_approval(state):
 
@@ -19,4 +27,3 @@ def simulate_approval(state):
 
     return state
 
-print("tools/approval_tools.py now ready to be used")
